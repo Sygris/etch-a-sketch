@@ -2,11 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Monteserrat", sans-serif;
   font-size: 1rem;
+
 }
 
 :root {
   --bg: hsl(210, 11%, 15%);
+  --accent: hsl(210, 10%, 23%);
   --text: hsl(210, 17%, 98%);
 }
 
@@ -15,13 +18,56 @@ body {
   color: var(--text);
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container--row {
+  flex-direction: row;
+}
+
+.container--column {
+  flex-direction: column;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  width: 140px;
+  height: 40px;
+  background: var(--accent);
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid var(--text);
+}
+
 h1 {
   font-size: 5rem;
   text-align: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.settings {
+  gap: 20px;
+}
+
+input[type="color"] {
+  appearance: none;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: none;
+  background: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

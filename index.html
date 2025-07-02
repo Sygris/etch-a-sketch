@@ -7,10 +7,12 @@
   <title>🖌️ Etch a Sketch</title>
 </head>
 <body>
-  <h1>Etch-a-sketch</h1>
+  <header>
+    <h1>Etch-a-sketch</h1>
+  </header>
   <main class="container">
-    <div class="container settings">
-      <input type="color" name="colorPicker" id="colorPicker">
+    <div class="container container--column settings">
+      <input type="color" name="colorPicker" id="colorPicker" value="#343a40">
       <button id="colorMode" type="button">Color Mode</button>
       <button id="rainbowMode" type="button">Rainbow Mode</button>
       <button id="eraser" type="button">Eraser</button>
@@ -18,7 +20,7 @@
       <input type="range" name="gridSize" id="gridSize">
     </div>
     <div id="grid">
-
+      
     </div>
   </main>
 </body>
