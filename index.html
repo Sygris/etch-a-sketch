@@ -13,15 +13,17 @@
   <main class="container">
     <div class="container container--column settings">
       <input type="color" name="colorPicker" id="colorPicker" value="#343a40">
-      <button id="colorMode" type="button">Color Mode</button>
+      <button id="colorMode" class="active" type="button">Color Mode</button>
       <button id="rainbowMode" type="button">Rainbow Mode</button>
       <button id="eraser" type="button">Eraser</button>
       <button id="clear" type="button">Clear</button>
-      <input type="range" name="gridSize" id="gridSize">
+      <p id="sizeValue" class="size-value">16x16</p>
+      <input type="range" name="gridSize" id="gridSize" value="16" min="1" max="64">
     </div>
     <div id="grid">
       
     </div>
   </main>
+  <script src="index.js"></script>
 </body>
 </html>
