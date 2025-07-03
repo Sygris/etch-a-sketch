@@ -155,7 +155,8 @@ input[type="range"]::-moz-range-progress {
 }
 
 
-#grid {
+.grid {
+  display: grid;
   aspect-ratio: 1 / 1;
   width: 515px;
   background: var(--text-muted);

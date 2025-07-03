@@ -17,8 +17,6 @@ buttonsList.forEach(button => button.addEventListener("click", () => {
 const grid = document.querySelector("#grid");
 let gridSize = 16;
 
-grid.style.display = "grid";
-
 document.querySelector('#gridSize').addEventListener("input", (e) => {
   const output = document.querySelector("#sizeValue");
   gridSize = e.target.value;
@@ -32,7 +30,11 @@ function clearGrid() {
 
 function generateGrid() {
   clearGrid();
-  for (let i = 0; i < gridSize; i++) {
+
+  grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+  grid.style.gridTemplaterows = `repeat(${gridSize}, 1fr)`;
+
+  for (let i = 0; i < gridSize * gridSize; i++) {
     let newDiv = document.createElement(("div"));
     newDiv.style.background = "Red";
     grid.appendChild(newDiv);
