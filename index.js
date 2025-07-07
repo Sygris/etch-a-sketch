@@ -1,4 +1,7 @@
 const DEFAULT_SIZE = 16;
+const DEFAULT_COLOR = "#343a40";
+const DEFAULT_ACTIVE_BUTTON = document.querySelector("#colorMode");
+let currentColor = DEFAULT_COLOR;
 let gridSize = DEFAULT_SIZE;
 
 function setActive(button) {
@@ -17,10 +20,18 @@ buttonsList.forEach(button => button.addEventListener("click", () => {
 }));
 
 const clearButton = document.querySelector("#clear");
-clearButton.addEventListener("click", clearButton);
+clearButton.addEventListener("click", (e) => {
+  clearGrid();
+  generateGrid();
+  setActive(DEFAULT_ACTIVE_BUTTON);
+});
+
+const colorPicker = document.querySelector("#colorPicker");
+colorPicker.addEventListener("input", (e) => {
+  currentColor = e.target.value;
+})
 
 const grid = document.querySelector("#grid");
-
 document.querySelector('#gridSize').addEventListener("input", (e) => {
   const output = document.querySelector("#sizeValue");
   gridSize = e.target.value;
@@ -43,10 +54,13 @@ function generateGrid() {
     let newDiv = document.createElement(("div"));
     newDiv.classList.add("grid-element");
     grid.appendChild(newDiv);
+
+    newDiv.addEventListener("mousedown", (e) =>{
+      newDiv.style.backgroundColor = currentColor;
+    });
   }
 }
 
 window.onload = (event) => {
-  console.log("TEST");
   generateGrid();
 };
