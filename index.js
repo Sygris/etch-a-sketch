@@ -54,6 +54,24 @@ clearButton.addEventListener("click", () => {
   generateGrid();
 });
 
+let isBorderOn = true;
+const borderCheckbox = document.querySelector("#border");
+borderCheckbox.addEventListener("click", toggleBorder);
+
+function toggleBorder() {
+  isBorderOn = !isBorderOn;
+
+  const listOfChildren = grid.children;
+  const arrayOfChildren = [...listOfChildren];
+
+  if (isBorderOn) {
+    arrayOfChildren.forEach(element => element.classList.add("border"));
+  }
+  else {
+    arrayOfChildren.forEach(element => element.classList.remove("border"));
+  }
+}
+
 const colorPicker = document.querySelector("#colorPicker");
 colorPicker.addEventListener("input", (e) => {
   currentColor = e.target.value;

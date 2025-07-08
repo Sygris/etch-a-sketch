@@ -167,8 +167,18 @@ input[type="range"]::-moz-range-progress {
   left: -6.4rem;
 }
 
-.grid-element {
-  /* border: 1px solid var(--text-muted); */
+.border {
+  border: 1px solid var(--text-muted);
+}
+
+input[type="checkbox"] {
+  all: unset;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  width: 25px;
+  background-color: var(--secondary);
+  border: 1px solid var(--text-muted);
+  border-radius: 5px;
 }
 
 footer {
