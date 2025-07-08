@@ -13,6 +13,17 @@ function setActive(button) {
   currentActiveButton = button;
 }
 
+function setMode() {
+  switch (currentActiveButton) {
+    case value:
+      
+      break;
+  
+    default:
+      break;
+  }
+}
+
 let currentActiveButton = document.querySelector(".active");
 const buttonsList = document.querySelectorAll("button");
 buttonsList.forEach(button => button.addEventListener("click", () => {
@@ -20,7 +31,7 @@ buttonsList.forEach(button => button.addEventListener("click", () => {
 }));
 
 const clearButton = document.querySelector("#clear");
-clearButton.addEventListener("click", (e) => {
+clearButton.addEventListener("click", () => {
   clearGrid();
   generateGrid();
   setActive(DEFAULT_ACTIVE_BUTTON);
@@ -55,12 +66,12 @@ function generateGrid() {
     newDiv.classList.add("grid-element");
     grid.appendChild(newDiv);
 
-    newDiv.addEventListener("mousedown", (e) =>{
+    newDiv.addEventListener("mousedown", () =>{
       newDiv.style.backgroundColor = currentColor;
     });
   }
 }
 
-window.onload = (event) => {
+window.onload = () => {
   generateGrid();
 };
