@@ -12,11 +12,15 @@ const MODES = {
 
 let currentMode = MODES.COLOR;
 
+let isMouseDown = false;
+document.body.onmousedown = () => (isMouseDown = true);
+document.body.onmouseup = () => (isMouseDown = false);
+
 function setActive(button) {
   if (currentActiveButton != null) {
     currentActiveButton.classList.remove("active");
   }
-  
+
   button.classList.add("active");
   currentActiveButton = button;
 }
@@ -30,7 +34,7 @@ function setMode() {
       currentMode = MODES.RAINBOW;
       break;
     case MODES.ERASER:
-      currentMode = MODES.ERASER ;
+      currentMode = MODES.ERASER;
       break;
     default:
       break;
@@ -38,7 +42,7 @@ function setMode() {
 }
 
 let currentActiveButton = document.querySelector(".active");
-const buttonsList = document.querySelectorAll("button");
+const buttonsList = document.querySelectorAll(".colorMode");
 buttonsList.forEach(button => button.addEventListener("click", () => {
   setActive(button);
   setMode();
@@ -62,7 +66,7 @@ document.querySelector('#gridSize').addEventListener("input", (e) => {
   output.textContent = gridSize + " x " + gridSize;
 
   generateGrid();
-}); 
+});
 
 function clearGrid() {
   grid.innerHTML = "";
@@ -73,28 +77,31 @@ function generateGrid() {
 
   grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   grid.style.gridTemplaterows = `repeat(${gridSize}, 1fr)`;
-  
+
   for (let i = 0; i < gridSize * gridSize; i++) {
     let newDiv = document.createElement(("div"));
     newDiv.classList.add("grid-element");
-    grid.appendChild(newDiv);
+    
+    newDiv.addEventListener("mousedown", paintGridElement);
+    newDiv.addEventListener("mouseover", paintGridElement);
 
-    newDiv.addEventListener("mousedown", (e) =>{
-      paintGridElement(e.target);
-    });
+    grid.appendChild(newDiv);
   }
 }
 
-function paintGridElement(gridElement) {
+function paintGridElement(event) {
+  if (event.type === "mouseover" && !isMouseDown) 
+    return;
+
   switch (currentMode) {
     case MODES.COLOR:
-      gridElement.style.backgroundColor = currentColor;
+      event.target.style.backgroundColor = currentColor;
       break;
-    case MODES.RAINBOW: 
-      gridElement.style.backgroundColor = `rgb(${generateRandomColor()})`;
+    case MODES.RAINBOW:
+      event.target.style.backgroundColor = `rgb(${generateRandomColor()})`;
       break;
     case MODES.ERASER:
-      gridElement.style.backgroundColor = "#FFF";
+      event.target.style.backgroundColor = "#FEFEFE";
     default:
       break;
   }
